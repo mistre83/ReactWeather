@@ -106,15 +106,15 @@
 
 	var Main = __webpack_require__(223);
 	var Weather = __webpack_require__(225);
-	var About = __webpack_require__(248);
-	var Examples = __webpack_require__(249);
+	var About = __webpack_require__(249);
+	var Examples = __webpack_require__(250);
 
 	// Load foundations
-	__webpack_require__(250);
+	__webpack_require__(251);
 	$(document).foundation();
 
 	// App css
-	__webpack_require__(254);
+	__webpack_require__(255);
 
 	ReactDOM.render(React.createElement(
 	  Router,
@@ -26328,6 +26328,8 @@
 	/* WEBPACK VAR INJECTION */(function($) {'use strict';
 
 	var React = __webpack_require__(8);
+	var ReactDOM = __webpack_require__(165);
+	var ReactDOMServer = __webpack_require__(248);
 
 	var ErrorModal = React.createClass({
 	  displayName: 'ErrorModal',
@@ -26338,24 +26340,28 @@
 	    };
 	  },
 
-	  componentDidMount: function componentDidMount() {
-	    var modal = new Foundation.Reveal($('#error-modal'));
-	    modal.open();
+	  propTypes: {
+	    title: React.PropTypes.string,
+	    message: React.PropTypes.string.isRequired
 	  },
 
-	  render: function render() {
-	    return React.createElement(
+	  componentDidMount: function componentDidMount() {
+	    var _props = this.props;
+	    var title = _props.title;
+	    var message = _props.message;
+
+	    var modalMarkup = React.createElement(
 	      'div',
 	      { id: 'error-modal', className: 'reveal tiny text-center', 'data-reveal': '' },
 	      React.createElement(
 	        'h4',
 	        null,
-	        'Some Title'
+	        title
 	      ),
 	      React.createElement(
 	        'p',
 	        null,
-	        'Our error message!'
+	        message
 	      ),
 	      React.createElement(
 	        'p',
@@ -26367,6 +26373,16 @@
 	        )
 	      )
 	    );
+
+	    var $modal = $(ReactDOMServer.renderToString(modalMarkup));
+	    $(ReactDOM.findDOMNode(this)).html($modal);
+
+	    var modal = new Foundation.Reveal($('#error-modal'));
+	    modal.open();
+	  },
+
+	  render: function render() {
+	    return React.createElement('div', null);
 	  }
 	});
 
@@ -26375,6 +26391,15 @@
 
 /***/ },
 /* 248 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	module.exports = __webpack_require__(155);
+
+
+/***/ },
+/* 249 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -26430,7 +26455,7 @@
 	module.exports = About;
 
 /***/ },
-/* 249 */
+/* 250 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -26484,16 +26509,16 @@
 	module.exports = Examples;
 
 /***/ },
-/* 250 */
+/* 251 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(251);
+	var content = __webpack_require__(252);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(253)(content, {});
+	var update = __webpack_require__(254)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -26510,10 +26535,10 @@
 	}
 
 /***/ },
-/* 251 */
+/* 252 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(252)();
+	exports = module.exports = __webpack_require__(253)();
 	// imports
 
 
@@ -26524,7 +26549,7 @@
 
 
 /***/ },
-/* 252 */
+/* 253 */
 /***/ function(module, exports) {
 
 	/*
@@ -26580,7 +26605,7 @@
 
 
 /***/ },
-/* 253 */
+/* 254 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -26834,16 +26859,16 @@
 
 
 /***/ },
-/* 254 */
+/* 255 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(255);
+	var content = __webpack_require__(256);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(253)(content, {});
+	var update = __webpack_require__(254)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -26860,10 +26885,10 @@
 	}
 
 /***/ },
-/* 255 */
+/* 256 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(252)();
+	exports = module.exports = __webpack_require__(253)();
 	// imports
 
 
